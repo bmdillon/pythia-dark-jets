@@ -1,0 +1,94 @@
+! This file contains commands to be read in for a Pythia8 run.
+! Lines not beginning with a letter or digit are comments.
+! Names are case-insensitive  -  but spellings-sensitive!
+! process:  pp->darkjets, Q50M10
+
+! Settings that will be used in a main program.
+Main:numberOfEvents = 100000          ! number of events to generate
+Main:timesAllowErrors = 3          ! abort run after this many flawed events
+
+! Settings related to output in init(), next() and stat().
+Init:showChangedSettings = on      ! list changed settings
+Init:showAllSettings = off         ! list all settings
+Init:showChangedParticleData = on  ! list changed particle data
+Init:showAllParticleData = off     ! list all particle data
+Init:showOneParticleData = 21      ! list all particles and decays for gluons
+Next:numberCount = 1000            ! print message every n events
+Next:numberShowLHA = 1             ! print LHA information n times
+Next:numberShowInfo = 1            ! print event information n times
+Next:numberShowProcess = 1         ! print process record n times
+Next:numberShowEvent = 1           ! print event record n times
+Stat:showPartonLevel = on          ! additional statistics on MPI
+
+! Beam parameter settings. Values below agree with default ones.
+Beams:idA = 2212                   ! first beam, p = 2212, pbar = -2212
+Beams:idB = 2212                   ! second beam, p = 2212, pbar = -2212
+Beams:eCM = 14000.                 ! CM energy of collision
+
+! PDF settings. Default is to use internal PDFs
+! some pdf sets examples: cteq61.LHpdf cteq61.LHgrid MRST2004nlo.LHgrid
+#PDF:pSet = LHAPDF5:MRST2001lo.LHgrid
+! Allow extrapolation of PDF's beyond x and Q2 boundaries, at own risk.
+! Default behaviour is to freeze PDF's at boundaries.
+#PDF:extrapolate = on
+
+! particle properties
+HiddenValley:Ngauge = 3
+! Q50M10
+4900001:m0 = 50.0
+4900002:m0 = 50.0
+4900111:m0 = 10.0
+4900113:m0 = 10.0
+4900101:m0 = 5.0
+4900022:onMode = on
+4900001:onMode = on
+4900002:onMode = on
+4900003:onMode = off
+4900004:onMode = off
+4900101:onMode = on
+4900111:onMode = on
+4900113:onMode = on
+4900991:onMode = on
+4900001:0:onMode = on
+4900001:4900101:onMode = on
+4900001:1:onMode = on
+4900001:2:onMode = on
+4900001:3:onMode = off
+4900001:4:onMode = off
+4900001:5:onMode = off
+4900001:6:onMode = off
+4900001:7:onMode = off
+4900001:8:onMode = off
+4900001:9:onMode = off
+4900001:10:onMode = off
+4900002:0:onMode = on
+4900002:4900101:onMode = on
+4900002:1:onMode = on
+4900002:2:onMode = on
+4900002:3:onMode = off
+4900002:4:onMode = off
+4900002:5:onMode = off
+4900002:6:onMode = off
+4900002:7:onMode = off
+4900002:8:onMode = off
+4900002:9:onMode = off
+4900002:10:onMode = off
+
+! pp -> dark-jets
+PhaseSpace:pTHatMin = 100.          ! minimum pT of hard process
+#PhaseSpace:pTHatMax = 400.          ! maximum pT of hard process
+HardQCD:all = off
+HiddenValley:gg2DvDvbar = on
+HiddenValley:gg2UvUvbar = on
+HiddenValley:qqbar2DvDvbar = on
+HiddenValley:qqbar2UvUvbar = on
+HiddenValley:doKinMix = on
+HiddenValley:fragment = on
+
+! hadronic activity
+PartonLevel:MPI = off              ! multiparton interactions
+PartonLevel:ISR = on              ! initial-state radiation
+PartonLevel:FSR = on              ! final-state radiation
+HiddenValley:FSR = on
+HadronLevel:Hadronize = on        ! hadronization
+
